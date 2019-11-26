@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TipoJogoActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Selecione as categorias das palavras"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <CheckBox
+            android:id="@+id/checkBoxProfissao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profissões" />
+
+        <CheckBox
+            android:id="@+id/checkBoxEsportes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Esportes" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFilmes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filmes" />
+
+        <CheckBox
+            android:id="@+id/checkBoxObjetos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Objetos" />
+
+        <CheckBox
+            android:id="@+id/checkBoxAnimais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Animais" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnComecar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Começar"
+        android:onClick="iniciaJogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupCategoria" />
+</androidx.constraintlayout.widget.ConstraintLayout>
