@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void gerarPalavraRandomica(){
+    private void gerarPalavraRandomica(){
         String[] profissao = {
                 "Advogado","Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
