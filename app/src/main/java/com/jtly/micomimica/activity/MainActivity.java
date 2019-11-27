@@ -6,16 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jtly.micomimica.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView palavrarandom;
     private Button gerar;
     private int palavra;
+    private Set<String> set = new HashSet<>();
+    private Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void gerarPalavraRandomica(){
+    private void selecionaPalavraAleatoriamente(){
         String[] profissao = {
                 "Advogado","Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
@@ -65,24 +73,31 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 palavra = new Random().nextInt(profissao.length);
                 break;
+
             case 1:
                 palavra = new Random().nextInt(esporte.length);
                 break;
+
             case 2:
                 palavra = new Random().nextInt(filme.length);
                 break;
+
             case 3:
                 palavra = new Random().nextInt(objeto.length);
                 break;
+
             case 4:
                 palavra = new Random().nextInt(animal.length);
                 break;
+
+               default:
+                   Toast.makeText(MainActivity.this, "Fim do jogo", Toast.LENGTH_LONG).show();
         }
 
         palavrarandom.setText(numRandom[categoria][palavra]);
     }
 
     public void gerarPalavra(View view){
-        gerarPalavraRandomica();
+        selecionaPalavraAleatoriamente();
     }
 }
