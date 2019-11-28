@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.jtly.micomimica.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView palavrarandom;
     private Button gerar;
     private int palavra;
-    private Set<String> set = new HashSet<>();
+    //private Set<Integer> set = new HashSet<>(palavra);
     private Random random = new Random();
 
     @Override
