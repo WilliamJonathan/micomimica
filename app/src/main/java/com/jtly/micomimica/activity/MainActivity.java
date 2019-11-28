@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private int palavra4;
     private Random random = new Random();
     private int categoria;
+    private int aux0;
+    private int aux1;
 
     private Set<Integer> set0 = new HashSet<>();
     private Set<Integer> set1 = new HashSet<>();
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private Integer[] animalResultado;
 
     private String[] profissao;
+    private String[] esporte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
        profissaoResultado = set0.toArray(new Integer[set0.size()]);
 
-    }
-
-    private void selecionaPalavraAleatoriamente(){
-
-
-        String[] esporte = {
+        esporte = new String[]{
                 "Futebol", "Golf", "Natação", "Maratonismo",
                 "Automobilismo", "Ciclismo", "Crossfit", "MMA",
                 "Baseball"
@@ -75,9 +73,28 @@ public class MainActivity extends AppCompatActivity {
             palavra1 = random.nextInt(esporte.length);
             set1.add(palavra1);
         }
-        profissaoResultado = set0.toArray(new Integer[set0.size()]);
+        esporteResultado = set0.toArray(new Integer[set1.size()]);
 
-        String[] filme = {
+    }
+
+    private void selecionaPalavraAleatoriamente(){
+        aux0 = 0;
+        aux1 = 0;
+        String[][] numRandom = {profissao, esporte};
+        categoria = random.nextInt(numRandom.length);
+
+        switch (categoria){
+            case 0:
+                palavrarandom.setText(profissao[profissaoResultado[aux0]]);
+                aux0 = aux0 + 1;
+                break;
+
+            case 1:
+                palavrarandom.setText(esporte[esporteResultado[aux1]]);
+                aux1 = aux1 + 1;
+                break;
+        }
+        /*String[] filme = {
                 "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
                 "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
                 "Bastardos inglórios"
@@ -96,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 "Canguru", "Coala", "Zebra", "Ornitorrinco",
                 "Baleia Azul"
         };
-        palavra4 = random.nextInt(animal.length);
+        palavra4 = random.nextInt(animal.length);*/
 
         //String[][] numRandom = {profissao, esporte, filme, objeto, animal};
 
