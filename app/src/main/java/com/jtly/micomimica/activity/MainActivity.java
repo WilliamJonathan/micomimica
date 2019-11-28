@@ -12,9 +12,8 @@ import com.jtly.micomimica.R;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -22,9 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView palavrarandom;
     private Button gerar;
-    private int palavra;
-    //private Set<Integer> set = new HashSet<>(palavra);
+    private int palavra0;
+    private int palavra1;
+    private int palavra2;
+    private int palavra3;
+    private int palavra4;
     private Random random = new Random();
+    private String aux;
+    private int categoria;
+
+    private Set<Integer> set0 = new HashSet<>();
+    private Set<Integer> set1 = new HashSet<>();
+    private Set<Integer> set2 = new HashSet<>();
+    private Set<Integer> set3 = new HashSet<>();
+    private Set<Integer> set4 = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,67 +46,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void selecionaPalavraAleatoriamente(){
+
         String[] profissao = {
                 "Advogado","Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
                 "Motorista", "balconista", "Frentista"
         };
+        for (int i=0;i<=profissao.length; i++){
+            palavra0 = random.nextInt(profissao.length);
+            set0.add(palavra0);
+        }
+        Integer[] profissaoResultado = set0.toArray(new Integer[set0.size()]);
 
         String[] esporte = {
                 "Futebol", "Golf", "Natação", "Maratonismo",
                 "Automobilismo", "Ciclismo", "Crossfit", "MMA",
                 "Baseball"
         };
+        palavra1 = random.nextInt(esporte.length);
 
         String[] filme = {
                 "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
                 "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
                 "Bastardos inglórios"
         };
+        palavra2 = random.nextInt(filme.length);
 
         String[] objeto = {
                 "Faca", "Tesoura", "Balde de flor", "Garrafa de agua",
                 "Caneta", "Celular", "Mochila", "Poutrona",
                 "Agulha"
         };
+        palavra3 = random.nextInt(objeto.length);
 
         String[] animal = {
                 "Cavalo", "Leão", "Cachorro", "Coelho",
                 "Canguru", "Coala", "Zebra", "Ornitorrinco",
                 "Baleia Azul"
         };
+        palavra4 = random.nextInt(animal.length);
 
-        String[][] numRandom = {profissao, esporte, filme, objeto, animal};
+        //String[][] numRandom = {profissao, esporte, filme, objeto, animal};
 
-        int categoria = new Random().nextInt(numRandom.length);
+        //categoria = new Random().nextInt(numRandom.length);
 
-        switch (categoria){
-            case 0:
-                palavra = new Random().nextInt(profissao.length);
-                break;
-
-            case 1:
-                palavra = new Random().nextInt(esporte.length);
-                break;
-
-            case 2:
-                palavra = new Random().nextInt(filme.length);
-                break;
-
-            case 3:
-                palavra = new Random().nextInt(objeto.length);
-                break;
-
-            case 4:
-                palavra = new Random().nextInt(animal.length);
-                break;
-
-               default:
-                   Toast.makeText(MainActivity.this, "Fim do jogo", Toast.LENGTH_LONG).show();
-        }
-
-        palavrarandom.setText(numRandom[categoria][palavra]);
     }
+
 
     public void gerarPalavra(View view){
         selecionaPalavraAleatoriamente();
