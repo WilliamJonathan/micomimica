@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView palavrarandom;
     private Button gerar;
+
     private int palavra0;
     private int palavra1;
     private int palavra2;
     private int palavra3;
     private int palavra4;
     private Random random = new Random();
-    private String aux;
     private int categoria;
 
     private Set<Integer> set0 = new HashSet<>();
@@ -36,19 +36,22 @@ public class MainActivity extends AppCompatActivity {
     private Set<Integer> set3 = new HashSet<>();
     private Set<Integer> set4 = new HashSet<>();
 
+    private Integer[] profissaoResultado;
+    private Integer[] esporteResultado;
+    private Integer[] filmeResultado;
+    private Integer[] objetoResultado;
+    private Integer[] animalResultado;
+
+    private String[] profissao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         palavrarandom = findViewById(R.id.txtPalavra);
 
-    }
-
-    private void selecionaPalavraAleatoriamente(){
-
-        String[] profissao = {
-                "Advogado","Bancario", "Desenvolvedor", "Atendente de Telemarketing",
+        profissao = new String[]{
+                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
                 "Motorista", "balconista", "Frentista"
         };
@@ -56,14 +59,23 @@ public class MainActivity extends AppCompatActivity {
             palavra0 = random.nextInt(profissao.length);
             set0.add(palavra0);
         }
-        Integer[] profissaoResultado = set0.toArray(new Integer[set0.size()]);
+       profissaoResultado = set0.toArray(new Integer[set0.size()]);
+
+    }
+
+    private void selecionaPalavraAleatoriamente(){
+
 
         String[] esporte = {
                 "Futebol", "Golf", "Natação", "Maratonismo",
                 "Automobilismo", "Ciclismo", "Crossfit", "MMA",
                 "Baseball"
         };
-        palavra1 = random.nextInt(esporte.length);
+        for (int i=0;i<=esporte.length; i++){
+            palavra1 = random.nextInt(esporte.length);
+            set1.add(palavra1);
+        }
+        profissaoResultado = set0.toArray(new Integer[set0.size()]);
 
         String[] filme = {
                 "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
