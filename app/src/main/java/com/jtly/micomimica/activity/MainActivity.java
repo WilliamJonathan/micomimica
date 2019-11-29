@@ -3,6 +3,7 @@ package com.jtly.micomimica.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,10 +11,16 @@ import android.widget.Toast;
 
 import com.jtly.micomimica.R;
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.io.Console;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -21,100 +28,108 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView palavrarandom;
     private Button gerar;
+    private int palavra;
+    private Boolean baralho;
 
-    private int palavra0;
-    private int palavra1;
-    private int palavra2;
-    private int palavra3;
-    private int palavra4;
-    private Random random = new Random();
-    private int categoria;
+    private List<String> profissao;
+    private List<String> esporte;
+    private List<String> filme;
+    private List<String> objeto;
+    private List<String> animal;
+
     private int aux0;
     private int aux1;
-
-    private Set<Integer> set0 = new HashSet<>();
-    private Set<Integer> set1 = new HashSet<>();
-    private Set<Integer> set2 = new HashSet<>();
-    private Set<Integer> set3 = new HashSet<>();
-    private Set<Integer> set4 = new HashSet<>();
-
-    private Integer[] profissaoResultado;
-    private Integer[] esporteResultado;
-    private Integer[] filmeResultado;
-    private Integer[] objetoResultado;
-    private Integer[] animalResultado;
-
-    private String[] profissao;
-    private String[] esporte;
+    private int aux2;
+    private int aux3;
+    private int aux4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         palavrarandom = findViewById(R.id.txtPalavra);
+        baralho = true;
+        aux0 = 0;
+        aux1 = 0;
+        aux2 = 0;
+        aux3 = 0;
+        aux4 = 0;
 
-        profissao = new String[]{
-                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
+        profissao = Arrays.asList("Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
-                "Motorista", "balconista", "Frentista"
-        };
-        for (int i=0;i<=profissao.length; i++){
-            palavra0 = random.nextInt(profissao.length);
-            set0.add(palavra0);
-        }
-       profissaoResultado = set0.toArray(new Integer[set0.size()]);
+                "Motorista", "balconista", "Frentista");
 
-        esporte = new String[]{
+        esporte = Arrays.asList(
                 "Futebol", "Golf", "Natação", "Maratonismo",
                 "Automobilismo", "Ciclismo", "Crossfit", "MMA",
                 "Baseball"
-        };
-        for (int i=0;i<=esporte.length; i++){
-            palavra1 = random.nextInt(esporte.length);
-            set1.add(palavra1);
-        }
-        esporteResultado = set0.toArray(new Integer[set1.size()]);
+        );
+
+
+        filme = Arrays.asList(
+                "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
+                "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
+                "Bastardos inglórios"
+        );
+
+        objeto = Arrays.asList(
+                "Faca", "Tesoura", "Balde de flor", "Garrafa de agua",
+                "Caneta", "Celular", "Mochila", "Poutrona",
+                "Agulha"
+        );
+
+        animal = Arrays.asList(
+                "Cavalo", "Leão", "Cachorro", "Coelho",
+                "Canguru", "Coala", "Zebra", "Ornitorrinco",
+                "Baleia Azul"
+        );
 
     }
 
     private void selecionaPalavraAleatoriamente(){
-        aux0 = 0;
-        aux1 = 0;
-        String[][] numRandom = {profissao, esporte};
-        categoria = random.nextInt(numRandom.length);
 
-        switch (categoria){
-            case 0:
-                palavrarandom.setText(profissao[profissaoResultado[aux0]]);
-                aux0 = aux0 + 1;
-                break;
+       if (baralho){
+           Collections.shuffle(profissao);
+           Collections.shuffle(esporte);
+           Collections.shuffle(filme);
+           Collections.shuffle(objeto);
+           Collections.shuffle(animal);
+           baralho = false;
+       }else if (!baralho){
+           int categoria = new Random().nextInt(4);
 
-            case 1:
-                palavrarandom.setText(esporte[esporteResultado[aux1]]);
-                aux1 = aux1 + 1;
-                break;
-        }
-        /*String[] filme = {
-                "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
-                "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
-                "Bastardos inglórios"
-        };
-        palavra2 = random.nextInt(filme.length);
+           switch (categoria){
+               case 0:
+                   palavrarandom.setText(profissao.get(aux0));
+                   aux0 = aux0 + 1;
+                   break;
+               case 1:
+                   palavrarandom.setText(esporte.get(aux1));
+                   aux1 = aux1 + 1;
+                   break;
+               case 2:
+                   palavrarandom.setText(objeto.get(aux2));
+                   aux2 = aux2 + 1;
+                   break;
+               case 3:
+                   palavrarandom.setText(filme.get(aux3));
+                   aux3 = aux3 + 1;
+                   break;
+               case 4:
+                   palavrarandom.setText(animal.get(aux4));
+                   aux4 = aux4 + 1;
+                   break;
 
-        String[] objeto = {
-                "Faca", "Tesoura", "Balde de flor", "Garrafa de agua",
-                "Caneta", "Celular", "Mochila", "Poutrona",
-                "Agulha"
-        };
-        palavra3 = random.nextInt(objeto.length);
+               default:
+                   Toast.makeText(MainActivity.this, "fim de jogo", Toast.LENGTH_LONG).show();
+                   break;
+           }
+       }else{
+           Toast.makeText(MainActivity.this, "não deu", Toast.LENGTH_LONG).show();
+       }
 
-        String[] animal = {
-                "Cavalo", "Leão", "Cachorro", "Coelho",
-                "Canguru", "Coala", "Zebra", "Ornitorrinco",
-                "Baleia Azul"
-        };
-        palavra4 = random.nextInt(animal.length);*/
-
+        /*String[] lista = ArrayUtils.addAll(profissao, esporte);
+        lista = ArrayUtils.addAll(lista, filme);*/
         //String[][] numRandom = {profissao, esporte, filme, objeto, animal};
 
         //categoria = new Random().nextInt(numRandom.length);
