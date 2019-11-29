@@ -86,6 +86,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void profissao(){
+        palavrarandom.setText(profissao.get(aux0));
+        aux0 = aux0 + 1;
+    }
+
+    private void esporte(){
+        palavrarandom.setText(esporte.get(aux1));
+        aux1 = aux1 + 1;
+    }
+
+    private void filme(){
+        palavrarandom.setText(filme.get(aux2));
+        aux2 = aux2 + 1;
+    }
+
+    private void objeto(){
+        palavrarandom.setText(objeto.get(aux3));
+        aux3 = aux3 + 1;
+    }
+
+    private void animal(){
+        palavrarandom.setText(animal.get(aux4));
+        aux4 = aux4 + 1;
+    }
+
     private void selecionaPalavraAleatoriamente(){
 
        if (baralho){
@@ -97,32 +122,24 @@ public class MainActivity extends AppCompatActivity {
            baralho = false;
        }else if (!baralho){
            int categoria = new Random().nextInt(4);
-
-           switch (categoria){
-               case 0:
-                   palavrarandom.setText(profissao.get(aux0));
-                   aux0 = aux0 + 1;
-                   break;
-               case 1:
-                   palavrarandom.setText(esporte.get(aux1));
-                   aux1 = aux1 + 1;
-                   break;
-               case 2:
-                   palavrarandom.setText(objeto.get(aux2));
-                   aux2 = aux2 + 1;
-                   break;
-               case 3:
-                   palavrarandom.setText(filme.get(aux3));
-                   aux3 = aux3 + 1;
-                   break;
-               case 4:
-                   palavrarandom.setText(animal.get(aux4));
-                   aux4 = aux4 + 1;
-                   break;
-
-               default:
-                   Toast.makeText(MainActivity.this, "fim de jogo", Toast.LENGTH_LONG).show();
-                   break;
+           if (categoria == 0 && aux0 < profissao.size()){
+               profissao();
+           }else if (categoria == 1 && aux1 < esporte.size()){
+               esporte();
+           }else if (categoria == 2 && aux2 < filme.size()){
+               filme();
+           }else if (categoria == 3 && aux3 < objeto.size()){
+               objeto();
+           }else if (categoria == 4 && aux4 < animal.size()){
+               animal();
+           }else if (aux0 >= profissao.size()
+                   && aux1 >= esporte.size()
+                   && aux2 >= filme.size()
+                   && aux3 >= objeto.size()
+                   && aux4 >= animal.size()){
+               Toast.makeText(MainActivity.this, "Fim das palavras", Toast.LENGTH_LONG).show();
+           }else{
+               Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
            }
        }else{
            Toast.makeText(MainActivity.this, "não deu", Toast.LENGTH_LONG).show();
