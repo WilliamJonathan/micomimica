@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
             baralho = false;
         }
 
+        //lista abstrata
+
+
     }
 
     private void profissao(){
@@ -116,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
             verificaFilme = true;
         }*/
     }
+    /**
+     * Jonathan, crie uma matriz de strinds e atribua valores vazios, depois de confirmar se a categoria e true ou false
+     * atribua os valores nos vetores de cada categoria
+     * */
 
     private void objeto(){
         palavrarandom.setText(objeto.get(aux3));
@@ -137,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     private void selecionaPalavraAleatoriamente(){
         if (!baralho){
             //int teste =  Collections.shuffle(todasCategorias);
-            categoria = new Random().nextInt(4);
+            categoria = new Random().nextInt(todasCategorias.size());
 
             if (categoria == 0 && aux0 < profissao.size() && verificaProfissao){
                 profissao();
