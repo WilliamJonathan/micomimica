@@ -22,10 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private Button gerar;
     private int palavra;
     private Boolean baralho;
-    private List<String> profissao, esporte, filme, objeto, animal;
+    private List<String> profissao, esporte, filme, objeto, animal, todasCategorias;
     private int aux0, aux1, aux2, aux3, aux4;
     private int categoria;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
+    private int cont1, cont2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,17 @@ public class MainActivity extends AppCompatActivity {
         aux3 = 0;
         aux4 = 0;
 
+        cont1 = 4;
+        cont2 = 0;
+
         Bundle bundle = getIntent().getExtras();
         verificaProfissao = bundle.getBoolean("profissao");
         verificaEsporte = bundle.getBoolean("esporte");
         verificaFilme = bundle.getBoolean("fime");
         verificaObjeto = bundle.getBoolean("objeto");
         verificaAnimal = bundle.getBoolean("animal");
+
+        todasCategorias = Arrays.asList("profissao", "esporte", "filme", "objeto", "animal");
 
         profissao = Arrays.asList("Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
@@ -130,8 +136,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void selecionaPalavraAleatoriamente(){
         if (!baralho){
-            //Collections.shuffle();
+            //int teste =  Collections.shuffle(todasCategorias);
             categoria = new Random().nextInt(4);
+
             if (categoria == 0 && aux0 < profissao.size() && verificaProfissao){
                 profissao();
             }else if (categoria == 1 && aux1 < esporte.size() && verificaEsporte){
@@ -143,7 +150,26 @@ public class MainActivity extends AppCompatActivity {
             }else if (categoria == 4 && aux4 < animal.size() && verificaAnimal){
                 animal();
             }else {
-                Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
+                if (categoria == 0 && aux0 >= profissao.size()){
+                    selecionaPalavraAleatoriamente();
+                }else if (categoria == 1 && aux1>= esporte.size()){
+                    selecionaPalavraAleatoriamente();
+                }else if (categoria == 2 && aux2>= filme.size()){
+                    selecionaPalavraAleatoriamente();
+                }else if (categoria == 3 && aux3>= objeto.size()){
+                    selecionaPalavraAleatoriamente();
+                }else if (categoria == 4 && aux4>= animal.size()){
+
+                }else if (aux0 >= profissao.size()
+                        && aux1>= esporte.size()
+                        && aux2>= filme.size()
+                        && aux3>= objeto.size()
+                        && aux4>= animal.size()){
+                    Toast.makeText(MainActivity.this, "Fim das palavras", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
+                }
+                //Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(MainActivity.this, "não deu", Toast.LENGTH_LONG).show();
