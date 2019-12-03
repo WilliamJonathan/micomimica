@@ -34,11 +34,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         palavrarandom = findViewById(R.id.txtPalavra);
 
         baralho = false;
         cont = 0;
 
+        //Verifica quais categorias foram selecionadas no CheckBox
         Bundle bundle = getIntent().getExtras();
         verificaProfissao = bundle.getBoolean("profissao");
         verificaEsporte = bundle.getBoolean("esporte");
@@ -46,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         verificaObjeto = bundle.getBoolean("objeto");
         verificaAnimal = bundle.getBoolean("animal");
 
-
+        /**
+         * Grupo de Arrays com todas as palavras divididas em categorias
+         * */
         profissao = new String[]{
                 "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
@@ -77,20 +81,23 @@ public class MainActivity extends AppCompatActivity {
                 "Zebra", "Ornitorrinco", "Baleia Azul"
         };
 
+        /**
+         * Metodos que verificam quais categorias foram selecionadas
+         * */
         profissao();
         esporte();
         filme();
         objeto();
         animal();
 
-        //lista abstrata
+        //lista com todas as palavras de acordo com a categoria
         todasCategorias = ArrayUtils.addAll(profissaoLista);
         todasCategorias = ArrayUtils.addAll(esporteLista, todasCategorias);
         todasCategorias = ArrayUtils.addAll(filmeLista, todasCategorias);
         todasCategorias = ArrayUtils.addAll(objetoLista, todasCategorias);
         todasCategorias = ArrayUtils.addAll(animalLista, todasCategorias);
 
-
+        //verifica de as palavras já forqam embaralhadas
         if (!baralho){
             Collections.shuffle(Arrays.asList(todasCategorias));
             baralho = true;
@@ -98,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Metodos que inserem palavras na lista principal de acordo com a categoria selecionada
+     * */
 
     private void profissao(){
         if (verificaProfissao){
@@ -139,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    //Metodo que insere as palavras no textView
     private void selecionaPalavraAleatoriamente(){
         if (baralho){
             if (cont<todasCategorias.length){
@@ -162,47 +173,4 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-/*if (!baralho){
-            //int teste =  Collections.shuffle(todasCategorias);
-            categoria = new Random().nextInt(todasCategorias.size());
 
-            if (categoria == 0 && aux0 < profissao.size() && verificaProfissao){
-                profissao();
-            }else if (categoria == 1 && aux1 < esporte.size() && verificaEsporte){
-                esporte();
-            }else if (categoria == 2 && aux2 < filme.size() && verificaFilme){
-                filme();
-            }else if (categoria == 3 && aux3 < objeto.size() && verificaObjeto){
-                objeto();
-            }else if (categoria == 4 && aux4 < animal.size() && verificaAnimal){
-                animal();
-            }else {
-                if (categoria == 0 && aux0>= profissao.size()){
-                    selecionaPalavraAleatoriamente();
-                }else if (categoria == 1 && aux1>= esporte.size()){
-                    selecionaPalavraAleatoriamente();
-                }else if (categoria == 2 && aux2>= filme.size()){
-                    selecionaPalavraAleatoriamente();
-                }else if (categoria == 3 && aux3>= objeto.size()){
-                    selecionaPalavraAleatoriamente();
-                }else if (categoria == 4 && aux4>= animal.size()){
-
-                }else if (aux0 >= profissao.size()
-                        && aux1>= esporte.size()
-                        && aux2>= filme.size()
-                        && aux3>= objeto.size()
-                        && aux4>= animal.size()){
-                    Toast.makeText(MainActivity.this, "Fim das palavras", Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
-                }
-                //Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
-            }
-        }else{
-            Toast.makeText(MainActivity.this, "não deu", Toast.LENGTH_LONG).show();
-        }*/
-
-
-//String[][] numRandom = {profissao, esporte, filme, objeto, animal};
-
-//categoria = new Random().nextInt(numRandom.length);
