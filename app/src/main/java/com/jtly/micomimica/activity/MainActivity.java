@@ -20,13 +20,13 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView palavrarandom;
+    private TextView palavrarandom, equipe1, equipe2;
     private Button gerar;
     private int palavra;
     private Boolean baralho;
     private String[] profissao, esporte, filme, objeto, animal, todasCategorias;
     private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
-    private int categoria;
+    private String eq1, eq2;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
     private int cont;
 
@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         palavrarandom = findViewById(R.id.txtPalavra);
+        equipe1 = findViewById(R.id.txtEquipe1);
+        equipe2 = findViewById(R.id.txtEquipe2);
 
         baralho = false;
         cont = 0;
@@ -47,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
         verificaFilme = bundle.getBoolean("fime");
         verificaObjeto = bundle.getBoolean("objeto");
         verificaAnimal = bundle.getBoolean("animal");
+
+        eq1 = bundle.getString("eq1");
+        equipe1.setText(eq1 + ": ");
+        eq2 = bundle.getString("eq2");
+        equipe2.setText(eq2 + ": ");
+
+
 
         /**
          * Grupo de Arrays com todas as palavras divididas em categorias
