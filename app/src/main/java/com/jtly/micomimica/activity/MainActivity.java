@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.jtly.micomimica.R;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private Button gerar;
     private int palavra;
     private Boolean baralho;
-    private List<String> profissao, esporte, filme, objeto, animal, todasCategorias;
+    private String[] profissao, esporte, filme, objeto, animal, todasCategorias;
+    private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
     private int aux0, aux1, aux2, aux3, aux4;
     private int categoria;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
@@ -41,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         aux3 = 0;
         aux4 = 0;
 
-        cont1 = 4;
-        cont2 = 0;
 
         Bundle bundle = getIntent().getExtras();
         verificaProfissao = bundle.getBoolean("profissao");
@@ -51,98 +52,116 @@ public class MainActivity extends AppCompatActivity {
         verificaObjeto = bundle.getBoolean("objeto");
         verificaAnimal = bundle.getBoolean("animal");
 
-        todasCategorias = Arrays.asList("profissao", "esporte", "filme", "objeto", "animal");
 
-        profissao = Arrays.asList("Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
+        profissao = new String[]{
+                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
                 "Cantor", "Ator", "Jogardor de futebol", "Professor",
-                "Motorista", "balconista", "Frentista");
+                "Motorista", "balconista", "Frentista"
+        };
 
-        esporte = Arrays.asList(
+        esporte = new String[]{
                 "Futebol", "Golf", "Natação", "Maratonismo",
                 "Automobilismo", "Ciclismo", "Crossfit", "MMA",
                 "Baseball"
-        );
+        };
 
-        filme = Arrays.asList(
+        filme = new String[]{
                 "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
                 "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
                 "Bastardos inglórios"
-        );
+        };
 
-        objeto = Arrays.asList(
-                "Faca", "Tesoura", "Balde de flor", "Garrafa de agua",
-                "Caneta", "Celular", "Mochila", "Poutrona",
-                "Agulha"
-        );
+        objeto = new String[]{
+                "Faca", "Tesoura", "Balde de flor",
+                "Garrafa de agua", "Caneta", "Celular",
+                "Mochila", "Poutrona", "Agulha"
+        };
 
-        animal = Arrays.asList(
-                "Cavalo", "Leão", "Cachorro", "Coelho",
-                "Canguru", "Coala", "Zebra", "Ornitorrinco",
-                "Baleia Azul"
-        );
+        animal = new String[]{
+                "Cavalo", "Leão", "Cachorro",
+                "Coelho", "Canguru", "Coala",
+                "Zebra", "Ornitorrinco", "Baleia Azul"
+        };
 
+        profissao();
+        esporte();
+        filme();
+        objeto();
+        animal();
 
+        //lista abstrata
+        todasCategorias = ArrayUtils.addAll(profissaoLista);
+        todasCategorias = ArrayUtils.addAll(esporteLista, todasCategorias);
+        todasCategorias = ArrayUtils.addAll(filmeLista, todasCategorias);
+        todasCategorias = ArrayUtils.addAll(objetoLista, todasCategorias);
+        todasCategorias = ArrayUtils.addAll(animalLista, todasCategorias);
+
+        
         if (baralho){
-            Collections.shuffle(profissao);
+            /*Collections.shuffle(profissao);
             Collections.shuffle(esporte);
             Collections.shuffle(filme);
             Collections.shuffle(objeto);
-            Collections.shuffle(animal);
+            Collections.shuffle(animal);*/
             baralho = false;
         }
-
-        //lista abstrata
 
 
     }
 
     private void profissao(){
-        palavrarandom.setText(profissao.get(aux0));
-        aux0 = aux0 + 1;
-        /*if (aux0 >= profissao.size()){
-            verificaProfissao = true;
-        }*/
+        if (verificaProfissao){
+            profissaoLista = profissao;
+        }else {
+            profissaoLista = new String[]{};
+        }
     }
 
     private void esporte(){
-        palavrarandom.setText(esporte.get(aux1));
-        aux1 = aux1 + 1;
-        /*if (aux1 >= esporte.size()){
-            verificaEsporte = true;
-        }*/
+        if (verificaEsporte){
+            esporteLista = esporte;
+        }else {
+            esporteLista = new String[]{};
+        }
     }
 
     private void filme(){
-        palavrarandom.setText(filme.get(aux2));
-        aux2 = aux2 + 1;
-        /*if (aux2 >= filme.size()){
-            verificaFilme = true;
-        }*/
+        if (verificaFilme){
+            filmeLista = filme;
+        }else {
+            filmeLista = new String[]{};
+        }
     }
-    /**
-     * Jonathan, crie uma matriz de strinds e atribua valores vazios, depois de confirmar se a categoria e true ou false
-     * atribua os valores nos vetores de cada categoria
-     * */
 
     private void objeto(){
-        palavrarandom.setText(objeto.get(aux3));
-        aux3 = aux3 + 1;
-        /*if (aux3 >= objeto.size()){
-            verificaObjeto = true;
-        }*/
+        if (verificaObjeto){
+            objetoLista = objeto;
+        }else {
+            objetoLista = new String[]{};
+        }
     }
 
     private void animal(){
-        palavrarandom.setText(animal.get(aux4));
-        aux4 = aux4 + 1;
-        /*if (aux4 >= animal.size()){
-            verificaAnimal = true;
-        }*/
+        if (verificaAnimal){
+            animalLista = animal;
+        }else {
+            animalLista = new String[]{};
+        }
     }
 
 
     private void selecionaPalavraAleatoriamente(){
-        if (!baralho){
+        String string = String.valueOf(todasCategorias.length);
+        Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
+    }
+
+
+    public void gerarPalavra(View view){
+        selecionaPalavraAleatoriamente();
+    }
+}
+
+/*if (!baralho){
             //int teste =  Collections.shuffle(todasCategorias);
             categoria = new Random().nextInt(todasCategorias.size());
 
@@ -157,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }else if (categoria == 4 && aux4 < animal.size() && verificaAnimal){
                 animal();
             }else {
-                if (categoria == 0 && aux0 >= profissao.size()){
+                if (categoria == 0 && aux0>= profissao.size()){
                     selecionaPalavraAleatoriamente();
                 }else if (categoria == 1 && aux1>= esporte.size()){
                     selecionaPalavraAleatoriamente();
@@ -180,38 +199,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }else{
             Toast.makeText(MainActivity.this, "não deu", Toast.LENGTH_LONG).show();
-        }
-    }
+        }*/
 
 
-    public void gerarPalavra(View view){
-        selecionaPalavraAleatoriamente();
-    }
-}
-
-
-       /*if (!baralho){
-           categoria = new Random().nextInt(4);
-           if (categoria == 0 && aux0 < profissao.size()){
-               profissao();
-           }else if (categoria == 1 && aux1 < esporte.size()){
-               esporte();
-           }else if (categoria == 2 && aux2 < filme.size()){
-               filme();
-           }else if (categoria == 3 && aux3 < objeto.size()){
-               objeto();
-           }else if (categoria == 4 && aux4 < animal.size()){
-               animal();
-           }else {
-
-               Toast.makeText(MainActivity.this, "Logica errada! Pense mais um pouco", Toast.LENGTH_LONG).show();
-           }
-       }else{
-           Toast.makeText(MainActivity.this, "não deu", Toast.LENGTH_LONG).show();
-       }*/
-
-        /*String[] lista = ArrayUtils.addAll(profissao, esporte);
-        lista = ArrayUtils.addAll(lista, filme);*/
 //String[][] numRandom = {profissao, esporte, filme, objeto, animal};
 
 //categoria = new Random().nextInt(numRandom.length);
