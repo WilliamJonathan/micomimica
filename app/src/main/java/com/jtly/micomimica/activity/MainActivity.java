@@ -26,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private Boolean baralho;
     private String[] profissao, esporte, filme, objeto, animal, todasCategorias;
     private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
-    private int aux0, aux1, aux2, aux3, aux4;
     private int categoria;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
-    private int cont1, cont2;
+    private int cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         palavrarandom = findViewById(R.id.txtPalavra);
 
-        baralho = true;
-        aux0 = 0;
-        aux1 = 0;
-        aux2 = 0;
-        aux3 = 0;
-        aux4 = 0;
-
+        baralho = false;
+        cont = 0;
 
         Bundle bundle = getIntent().getExtras();
         verificaProfissao = bundle.getBoolean("profissao");
@@ -96,14 +90,10 @@ public class MainActivity extends AppCompatActivity {
         todasCategorias = ArrayUtils.addAll(objetoLista, todasCategorias);
         todasCategorias = ArrayUtils.addAll(animalLista, todasCategorias);
 
-        
-        if (baralho){
-            /*Collections.shuffle(profissao);
-            Collections.shuffle(esporte);
-            Collections.shuffle(filme);
-            Collections.shuffle(objeto);
-            Collections.shuffle(animal);*/
-            baralho = false;
+
+        if (!baralho){
+            Collections.shuffle(Arrays.asList(todasCategorias));
+            baralho = true;
         }
 
 
@@ -151,8 +141,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void selecionaPalavraAleatoriamente(){
-        String string = String.valueOf(todasCategorias.length);
-        Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
+        if (baralho){
+            if (cont<todasCategorias.length){
+                palavrarandom.setText(todasCategorias[cont]);
+                cont = cont+1;
+            }else {
+                Toast.makeText(MainActivity.this, "Fim das palavras!", Toast.LENGTH_LONG).show();
+            }
+
+        }else {
+            Toast.makeText(MainActivity.this, "Embaralhe de novo!", Toast.LENGTH_LONG).show();
+        }
+        /*String string = String.valueOf(todasCategorias.length);
+        Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();*/
     }
 
 
