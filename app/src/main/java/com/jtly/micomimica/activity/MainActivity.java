@@ -1,7 +1,9 @@
 package com.jtly.micomimica.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -176,6 +178,32 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();*/
     }
 
+    private void alertDialogEncerrarJogo(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Deseja realmente sair da partida?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        alertDialogEncerrarJogo();
+        //super.onBackPressed();
+    }
 
     public void gerarPalavra(View view){
         selecionaPalavraAleatoriamente();
