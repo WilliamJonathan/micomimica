@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape"
+            android:parentActivityName=".activity.TipoJogoActivity"></activity>
         <activity
             android:name=".activity.TipoJogoActivity"
             android:screenOrientation="portrait">
