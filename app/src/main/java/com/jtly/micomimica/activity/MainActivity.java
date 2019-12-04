@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         verificaProfissao = bundle.getBoolean("profissao");
         verificaEsporte = bundle.getBoolean("esporte");
-        verificaFilme = bundle.getBoolean("fime");
+        verificaFilme = bundle.getBoolean("filme");
         verificaObjeto = bundle.getBoolean("objeto");
         verificaAnimal = bundle.getBoolean("animal");
 
@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
+                TextView textView = dialog.findViewById(android.R.id.message);
+                textView.setTextSize(40);
                 //palavrarandom.setText(todasCategorias[cont]);
                 cont = cont+1;
             }else {
