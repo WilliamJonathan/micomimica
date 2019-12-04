@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         eq2 = bundle.getString("eq2");
         equipe2.setText(eq2 + ": ");
 
+        alertDialogBoasVindas();
+
 
 
         /**
@@ -192,6 +194,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void alertDialogBoasVindas(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Vamos Começar!");
+        builder.setMessage("Equipe "+eq1+"\n"+"e\n"+"Equipe "+eq2);
+        builder.setCancelable(false);
+        builder.setPositiveButton("Começar jogo", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
             }
         });
 
