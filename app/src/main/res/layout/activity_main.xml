@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/txtPalavra"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -33,6 +34,7 @@
 
     <TextView
         android:id="@+id/txtEquipe1"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -45,6 +47,7 @@
 
     <TextView
         android:id="@+id/txtEquipe2"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

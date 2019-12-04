@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         palavrarandom = findViewById(R.id.txtPalavra);
         equipe1 = findViewById(R.id.txtEquipe1);
         equipe2 = findViewById(R.id.txtEquipe2);
+        gerar = findViewById(R.id.btnGerar);
+        equipe1.setVisibility(View.GONE);
+        equipe2.setVisibility(View.GONE);
 
         baralho = false;
         cont = 0;
@@ -209,6 +212,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Começar jogo", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                equipe1.setVisibility(View.VISIBLE);
+                equipe2.setVisibility(View.VISIBLE);
+                gerar.setText("Primeiro a jogar\n"+eq1);
                 dialogInterface.dismiss();
             }
         });
