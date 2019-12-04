@@ -63,39 +63,6 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBoasVindas();
 
         /**
-         * Grupo de Arrays com todas as palavras divididas em categorias
-         * */
-        profissao = new String[]{
-                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing", "Cantor", "Ator", "Jogardor de futebol", "Professor", "Motorista", "balconista", "Frentista", "Marceneiro","Babá","Back Office", "Back Office de Vendas","Balanceiro","Balconista","Bamburista","Barista","Barman","Berçarista","Bibliotecário","Bilheteiro",
-                "Bioinformacionista","Biologista","Biólogo","Biomédico","Bioquímico","Biotecnólogo","Blaster","Blogueiro","Bloquista","Bombeiro Civil",
-                "Bombeiro Industrial","Booker","Bordador","Borracheiro","Brigadista","Business Partner"
-        };
-
-        esporte = new String[]{
-                "Futebol", "Golf", "Natação", "Maratonismo",
-                "Automobilismo", "Ciclismo", "Crossfit", "MMA",
-                "Baseball"
-        };
-
-        filme = new String[]{
-                "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
-                "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
-                "Bastardos inglórios"
-        };
-
-        objeto = new String[]{
-                "Faca", "Tesoura", "Balde de flor",
-                "Garrafa de agua", "Caneta", "Celular",
-                "Mochila", "Poutrona", "Agulha"
-        };
-
-        animal = new String[]{
-                "Cavalo", "Leão", "Cachorro",
-                "Coelho", "Canguru", "Coala",
-                "Zebra", "Ornitorrinco", "Baleia Azul"
-        };
-
-        /**
          * Metodos que verificam quais categorias foram selecionadas
          * */
         profissao();
@@ -117,14 +84,30 @@ public class MainActivity extends AppCompatActivity {
             baralho = true;
         }
 
-
     }
 
     //Metodo que insere as palavras no textView
     private void selecionaPalavraAleatoriamente(){
         if (baralho){
             if (cont<todasCategorias.length){
-                palavrarandom.setText(todasCategorias[cont]);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(todasCategorias[cont]);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Acertou", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Errou", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                //palavrarandom.setText(todasCategorias[cont]);
                 cont = cont+1;
             }else {
                 Toast.makeText(MainActivity.this, "Fim das palavras!", Toast.LENGTH_LONG).show();
@@ -192,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
      * */
 
     private void profissao(){
+        profissao = new String[]{
+                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing", "Cantor", "Ator", "Jogardor de futebol", "Professor", "Motorista", "balconista", "Frentista", "Marceneiro","Babá","Back Office", "Back Office de Vendas","Balanceiro","Balconista","Bamburista","Barista","Barman","Berçarista","Bibliotecário","Bilheteiro",
+                "Bioinformacionista","Biologista","Biólogo","Biomédico","Bioquímico","Biotecnólogo","Blaster","Blogueiro","Bloquista","Bombeiro Civil",
+                "Bombeiro Industrial","Booker","Bordador","Borracheiro","Brigadista","Business Partner"
+        };
         if (verificaProfissao){
             profissaoLista = profissao;
         }else {
@@ -200,6 +188,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void esporte(){
+        esporte = new String[]{
+                "Futebol", "Golf", "Natação", "Maratonismo",
+                "Automobilismo", "Ciclismo", "Crossfit", "MMA",
+                "Baseball"
+        };
         if (verificaEsporte){
             esporteLista = esporte;
         }else {
@@ -208,6 +201,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void filme(){
+        filme = new String[]{
+                "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
+                "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
+                "Bastardos inglórios"
+        };
         if (verificaFilme){
             filmeLista = filme;
         }else {
@@ -216,6 +214,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void objeto(){
+        objeto = new String[]{
+                "Faca", "Tesoura", "Balde de flor",
+                "Garrafa de agua", "Caneta", "Celular",
+                "Mochila", "Poutrona", "Agulha"
+        };
         if (verificaObjeto){
             objetoLista = objeto;
         }else {
@@ -224,6 +227,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void animal(){
+        animal = new String[]{
+                "Cavalo", "Leão", "Cachorro",
+                "Coelho", "Canguru", "Coala",
+                "Zebra", "Ornitorrinco", "Baleia Azul"
+        };
         if (verificaAnimal){
             animalLista = animal;
         }else {
