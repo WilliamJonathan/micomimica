@@ -62,15 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialogBoasVindas();
 
-
-
         /**
          * Grupo de Arrays com todas as palavras divididas em categorias
          * */
         profissao = new String[]{
-                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing",
-                "Cantor", "Ator", "Jogardor de futebol", "Professor",
-                "Motorista", "balconista", "Frentista"
+                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing", "Cantor", "Ator", "Jogardor de futebol", "Professor", "Motorista", "balconista", "Frentista", "Marceneiro","Babá","Back Office", "Back Office de Vendas","Balanceiro","Balconista","Bamburista","Barista","Barman","Berçarista","Bibliotecário","Bilheteiro",
+                "Bioinformacionista","Biologista","Biólogo","Biomédico","Bioquímico","Biotecnólogo","Blaster","Blogueiro","Bloquista","Bombeiro Civil",
+                "Bombeiro Industrial","Booker","Bordador","Borracheiro","Brigadista","Business Partner"
         };
 
         esporte = new String[]{
@@ -120,50 +118,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-    }
-
-    /**
-     * Metodos que inserem palavras na lista principal de acordo com a categoria selecionada
-     * */
-
-    private void profissao(){
-        if (verificaProfissao){
-            profissaoLista = profissao;
-        }else {
-            profissaoLista = new String[]{};
-        }
-    }
-
-    private void esporte(){
-        if (verificaEsporte){
-            esporteLista = esporte;
-        }else {
-            esporteLista = new String[]{};
-        }
-    }
-
-    private void filme(){
-        if (verificaFilme){
-            filmeLista = filme;
-        }else {
-            filmeLista = new String[]{};
-        }
-    }
-
-    private void objeto(){
-        if (verificaObjeto){
-            objetoLista = objeto;
-        }else {
-            objetoLista = new String[]{};
-        }
-    }
-
-    private void animal(){
-        if (verificaAnimal){
-            animalLista = animal;
-        }else {
-            animalLista = new String[]{};
-        }
     }
 
     //Metodo que insere as palavras no textView
@@ -231,6 +185,50 @@ public class MainActivity extends AppCompatActivity {
 
     public void gerarPalavra(View view){
         selecionaPalavraAleatoriamente();
+    }
+
+    /**
+     * Metodos que inserem palavras na lista principal de acordo com a categoria selecionada
+     * */
+
+    private void profissao(){
+        if (verificaProfissao){
+            profissaoLista = profissao;
+        }else {
+            profissaoLista = new String[]{};
+        }
+    }
+
+    private void esporte(){
+        if (verificaEsporte){
+            esporteLista = esporte;
+        }else {
+            esporteLista = new String[]{};
+        }
+    }
+
+    private void filme(){
+        if (verificaFilme){
+            filmeLista = filme;
+        }else {
+            filmeLista = new String[]{};
+        }
+    }
+
+    private void objeto(){
+        if (verificaObjeto){
+            objetoLista = objeto;
+        }else {
+            objetoLista = new String[]{};
+        }
+    }
+
+    private void animal(){
+        if (verificaAnimal){
+            animalLista = animal;
+        }else {
+            animalLista = new String[]{};
+        }
     }
 }
 
