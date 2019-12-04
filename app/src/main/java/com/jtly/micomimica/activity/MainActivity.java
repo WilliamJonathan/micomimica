@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
     private String eq1, eq2;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
-    private int cont, eq, pontos1, pontos2;
+    private int cont, eq, pontos1, pontos2, tempo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         cont = 0;
         pontos1 = 0;
         pontos2 = 0;
+        tempo = 60;
 
         //Verifica quais categorias foram selecionadas no CheckBox
         Bundle bundle = getIntent().getExtras();
