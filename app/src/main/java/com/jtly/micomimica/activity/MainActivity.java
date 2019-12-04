@@ -24,13 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView palavrarandom, equipe1, equipe2;
     private Button gerar;
-    private int palavra;
     private Boolean baralho;
     private String[] profissao, esporte, filme, objeto, animal, todasCategorias;
     private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
     private String eq1, eq2;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
-    private int cont;
+    private int cont, eq, pontos1, pontos2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         baralho = false;
         cont = 0;
+        pontos1 = 0;
+        pontos2 = 0;
 
         //Verifica quais categorias foram selecionadas no CheckBox
         Bundle bundle = getIntent().getExtras();
@@ -56,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         verificaAnimal = bundle.getBoolean("animal");
 
         eq1 = bundle.getString("eq1");
-        equipe1.setText(eq1 + ": ");
+        equipe1.setText(eq1 + ": "+pontos1);
         eq2 = bundle.getString("eq2");
-        equipe2.setText(eq2 + ": ");
+        equipe2.setText(eq2 + ": "+pontos2);
 
         alertDialogBoasVindas();
 
@@ -96,13 +97,39 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Acertou", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if (eq == 0){
+                            gerar.setText("Proximo a jogar\n"+eq2);
+                            pontos1 = pontos1 + 1;
+                            if (pontos1 >= 20){
+                                fimDoJogo();
+                            }else {
+                                equipe1.setText(eq1 + ": "+pontos1);
+                                eq = 1;
+                            }
+                        }else {
+                            gerar.setText("Proximo a jogar\n"+eq1);
+                            pontos2 = pontos2 + 1;
+                            if (pontos2 >= 20){
+                                fimDoJogo();
+                            }else {
+                                equipe2.setText(eq2 + ": "+pontos2);
+                                eq = 0;
+                            }
+                        }
                         dialogInterface.dismiss();
                     }
                 });
                 builder.setNegativeButton("Errou", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
+                        if (eq == 0){
+                            gerar.setText("Proximo a jogar\n"+eq2);
+                            eq = 1;
+                        }else {
+                            gerar.setText("Proximo a jogar\n"+eq1);
+                            eq = 0;
+                        }
+                        dialogInterface.dismiss();
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -120,6 +147,29 @@ public class MainActivity extends AppCompatActivity {
         }
         /*String string = String.valueOf(todasCategorias.length);
         Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();*/
+    }
+
+    private void fimDoJogo(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Vitoria!");
+        if (eq == 0){
+            builder.setMessage("Equipe "+eq1+" venceu!");
+        }else if (eq == 1){
+            builder.setMessage("Equipe "+eq2+" venceu!");
+        }else {
+            builder.setMessage("Desculpe houve um erro no placar");
+        }
+        builder.setCancelable(false);
+        builder.setPositiveButton("Nova partida", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        TextView textView = dialog.findViewById(android.R.id.message);
+        textView.setTextSize(40);
     }
 
     private void alertDialogEncerrarJogo(){
@@ -160,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+        eq = 0;
     }
 
     @Override
