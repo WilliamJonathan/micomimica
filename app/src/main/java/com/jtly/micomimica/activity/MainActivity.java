@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private long timer(){
+    private CountDownTimer timer(){
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long l) {
@@ -107,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Fim do tempo", Toast.LENGTH_SHORT).show();
             }
         }.start();
-        return tempo;
+        //return tempo;
+        return null;
     }
 
     //Metodo que insere as palavras no textView
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         //dimis
-                        dialogPalavra.dismiss();
+                        dialogPalavra.cancel();
                     }
                 });
                 //btn negativo
@@ -157,13 +158,15 @@ public class MainActivity extends AppCompatActivity {
                             gerar.setText("Proximo a jogar\n"+eq1);
                             eq = 0;
                         }
-                        dialogPalavra.dismiss();
+                        dialogPalavra.cancel();
                     }
                 });
                 dialogPalavra.show();
                 TextView palavra = dialogPalavra.findViewById(R.id.txtPalavra);
                 palavra.setText(todasCategorias[cont]);
                 timer();
+                /*Thread te = new Thread();
+                te.interrupt();*/
                 cont = cont+1;
             }else {
                 Toast.makeText(MainActivity.this, "Fim das palavras!", Toast.LENGTH_LONG).show();
