@@ -165,57 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 palavra.setText(todasCategorias[cont]);
                 timer();
                 cont = cont+1;
-
-                //aqui
-                /*
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setCancelable(false);
-                builder.setMessage(todasCategorias[cont]);
-                builder.setPositiveButton("Acertou", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (eq == 0){
-                            gerar.setText("Proximo a jogar\n"+eq2);
-                            pontos1 = pontos1 + 1;
-                            if (pontos1 >= 20){
-                                fimDoJogo();
-                            }else {
-                                equipe1.setText(eq1 + ": "+pontos1);
-                                eq = 1;
-                            }
-                        }else {
-                            gerar.setText("Proximo a jogar\n"+eq1);
-                            pontos2 = pontos2 + 1;
-                            if (pontos2 >= 20){
-                                fimDoJogo();
-                            }else {
-                                equipe2.setText(eq2 + ": "+pontos2);
-                                eq = 0;
-                            }
-                        }
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.setNegativeButton("Errou", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (eq == 0){
-                            gerar.setText("Proximo a jogar\n"+eq2);
-                            eq = 1;
-                        }else {
-                            gerar.setText("Proximo a jogar\n"+eq1);
-                            eq = 0;
-                        }
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-                TextView textView = dialog.findViewById(android.R.id.message);
-                textView.setTextSize(40);
-                //palavrarandom.setText(todasCategorias[cont]);
-                cont = cont+1;
-                //aqui */
             }else {
                 Toast.makeText(MainActivity.this, "Fim das palavras!", Toast.LENGTH_LONG).show();
             }

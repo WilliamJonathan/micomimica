@@ -81,16 +81,21 @@ public class TipoJogoActivity extends AppCompatActivity {
     private void verificaCheck(){
         String eq1 = equipe1.getText().toString();
         String eq2 = equipe2.getText().toString();
-        if (profissao.isChecked() || esporte.isChecked() || filme.isChecked() || objeto.isChecked() || animal.isChecked() && !eq1.isEmpty() && !eq2.isEmpty()){
-            Intent intent = new Intent(TipoJogoActivity.this, MainActivity.class);
-            intent.putExtra("profissao", profissao());
-            intent.putExtra("esporte", esporte());
-            intent.putExtra("filme", filme());
-            intent.putExtra("objeto", objeto());
-            intent.putExtra("animal", animal());
-            intent.putExtra("eq1", eq1);
-            intent.putExtra("eq2", eq2);
-            startActivity(intent);
+        if (profissao.isChecked() || esporte.isChecked() || filme.isChecked() || objeto.isChecked() || animal.isChecked()){
+            if (!eq1.isEmpty() && !eq2.isEmpty()){
+                Intent intent = new Intent(TipoJogoActivity.this, MainActivity.class);
+                intent.putExtra("profissao", profissao());
+                intent.putExtra("esporte", esporte());
+                intent.putExtra("filme", filme());
+                intent.putExtra("objeto", objeto());
+                intent.putExtra("animal", animal());
+                intent.putExtra("eq1", eq1);
+                intent.putExtra("eq2", eq2);
+                startActivity(intent);
+            }else {
+                Toast.makeText(TipoJogoActivity.this, "Preencha o nome das equipes!!", Toast.LENGTH_LONG).show();
+            }
+
         }else{
             Toast.makeText(TipoJogoActivity.this, "Selecione uma ou mais\ncategorias para continuar!", Toast.LENGTH_LONG).show();
         }
