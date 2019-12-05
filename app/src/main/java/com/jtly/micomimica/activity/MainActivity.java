@@ -260,9 +260,24 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void profissao(){
         profissao = new String[]{
-                "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing", "Cantor", "Ator", "Jogardor de futebol", "Professor", "Motorista", "balconista", "Frentista", "Marceneiro","Babá","Back Office", "Back Office de Vendas","Balanceiro","Balconista","Bamburista","Barista","Barman","Berçarista","Bibliotecário","Bilheteiro",
-                "Bioinformacionista","Biologista","Biólogo","Biomédico","Bioquímico","Biotecnólogo","Blaster","Blogueiro","Bloquista","Bombeiro Civil",
-                "Bombeiro Industrial","Booker","Bordador","Borracheiro","Brigadista","Business Partner"
+                "Etiquetador","Estampador","Jornalista","Blogueiro","Decorador","Barman","Chaveiro","Jardineiro","Alpinista Industrial",
+                "Bioinformacionista","Diretor Industrial","Barista","Bombeiro Civil","Pizzaiolo","Colchoeiro","Caldeireiro","Biotecnólogo",
+                "Comissário de Avarias","Conferente","Chefe de Cozinha","Pintor","Bilheteiro","Cenotécnico","Piloto de Avião","Documentador",
+                "Colorista de Papel","Dentista","Fotógrafo","Acupunturista","Fonoaudiólogo","Camareiro","Bioquímico","Executivo de Vendas",
+                "Comprador","Dedetizador","Adestrador","Arte-finalista","Maquinista de Trem","Maquiador","Chefe de Confeitaria","Cabista",
+                "Escrevente","Paisagista","Digitador","Escriturário","Acrilista","Estatístico Trainee","Encadernador","Ecólogo","Florista",
+                "Caracterizador","Pedreiro","Colorista","Alinhador","Forneiro","Entregador","Farmacêutico","Desenhista","Comissário de Bordo",
+                "Economista","Programador","Estilista","Doméstica","Coletor de Lixo","Carpinteiro","Médico","Nutricionista","Padeiro","Bordador",
+                "Diretor Pedagógico","Marceneiro","Degustador","Business Partner","Cartazista","Back Office de Vendas","Duteiro","Biologista",
+                "Frentista","Estatístico","Colorista Têxtil","Fracionador","Cobrador de Ônibus","Administrador","Manobrista","Depiladora","Calceteiro",
+                "Caseiro","Carteiro","Cinegrafista","Biomédico","Ferramenteiro","Biólogo","Borracheiro","Comunicador social","Diretor Hospitalar",
+                "Confeiteiro","Adesivador","Amarrador","Comprador Técnico","Arrematador","Cenógrafo","Alfaiate","Fresador","DJ","Bloquista","Artesão",
+                "Articulador Social","Balanceiro","Ascensorista","Churrasqueiro","Comprador de Medicamentos","Motorista","Cliente Oculto",
+                "Bombeiro Industrial","Executivo de Contas","Chapeiro","Colocador de Papel de Parede","Brigadista","Bibliotecário","Extrusor",
+                "Berçarista","Marmorista","Ergonomista","Back Office","Chefe de Costura","Piloto de Helicóptero","Piloto","Panfleteiro","Blaster",
+                "Cilindrista","Calculista","Booker","Chefe de Compras","Concierge","Coach","Bamburista","Divulgador","Caixa de Banco","Esteticista",
+                "Marinheiro","Azulejista","Arquivista","Estoquista","Classificador de Grãos","Estofador","Empacotador","Jornaleiro","Palestrante",
+                "Chefe de Bar","Ferreiro","Almoxarife","Diagramador","Babá","Coletor de Amostras","Cabeleireiro","Encanador"
         };
         if (verificaProfissao){
             profissaoLista = profissao;
