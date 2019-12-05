@@ -6,31 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <TextView
-        android:id="@+id/txtPalavra"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Clique para começar"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnGerar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
     <Button
         android:id="@+id/btnGerar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="gerarPalavra"
         android:text="Gerar"
         android:textSize="18sp"
-        android:onClick="gerarPalavra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPalavra" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtEquipe1"

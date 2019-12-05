@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,21 +24,24 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView palavrarandom, equipe1, equipe2;
+    private TextView timer, palavra, equipe1, equipe2;
     private Button gerar;
     private Boolean baralho;
     private String[] profissao, esporte, filme, objeto, animal, todasCategorias;
     private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
     private String eq1, eq2;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
-    private int cont, eq, pontos1, pontos2, tempo;
+    private int cont, eq, pontos1, pontos2;
+    private long tempo;
+    private AlertDialog dialogPalavra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        palavrarandom = findViewById(R.id.txtPalavra);
+        //palavra = findViewById(R.id.txtPalavra);
+        //timer = findViewById(R.id.txtTimer);
         equipe1 = findViewById(R.id.txtEquipe1);
         equipe2 = findViewById(R.id.txtEquipe2);
         gerar = findViewById(R.id.btnGerar);
@@ -88,13 +93,84 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private long timer(){
+        new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long l) {
+                tempo = l / 1000;
+                TextView timer = dialogPalavra.findViewById(R.id.txtTimer);
+                timer.setText(String.valueOf(tempo));
+            }
+
+            @Override
+            public void onFinish() {
+                Toast.makeText(MainActivity.this, "Fim do tempo", Toast.LENGTH_SHORT).show();
+            }
+        }.start();
+        return tempo;
+    }
+
     //Metodo que insere as palavras no textView
     private void selecionaPalavraAleatoriamente(){
         if (baralho){
             if (cont<todasCategorias.length){
+                LayoutInflater layoutInflater = getLayoutInflater();
+                View view = layoutInflater.inflate(R.layout.dialog_principal, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(todasCategorias[cont]);
+                builder.setView(view);
+                dialogPalavra = builder.create();
+                //btn positivo
+                view.findViewById(R.id.btnAcertou).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (eq == 0){
+                            gerar.setText("Proximo a jogar\n"+eq2);
+                            pontos1 = pontos1 + 1;
+                            if (pontos1 >= 20){
+                                fimDoJogo();
+                            }else {
+                                equipe1.setText(eq1 + ": "+pontos1);
+                                eq = 1;
+                            }
+                        }else {
+                            gerar.setText("Proximo a jogar\n"+eq1);
+                            pontos2 = pontos2 + 1;
+                            if (pontos2 >= 20){
+                                fimDoJogo();
+                            }else {
+                                equipe2.setText(eq2 + ": "+pontos2);
+                                eq = 0;
+                            }
+                        }
+                        //dimis
+                        dialogPalavra.dismiss();
+                    }
+                });
+                //btn negativo
+                view.findViewById(R.id.btnErrou).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (eq == 0){
+                            gerar.setText("Proximo a jogar\n"+eq2);
+                            eq = 1;
+                        }else {
+                            gerar.setText("Proximo a jogar\n"+eq1);
+                            eq = 0;
+                        }
+                        dialogPalavra.dismiss();
+                    }
+                });
+                dialogPalavra.show();
+                TextView palavra = dialogPalavra.findViewById(R.id.txtPalavra);
+                palavra.setText(todasCategorias[cont]);
+                timer();
+                cont = cont+1;
+
+                //aqui
+                /*
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setCancelable(false);
+                builder.setMessage(todasCategorias[cont]);
                 builder.setPositiveButton("Acertou", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -139,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.setTextSize(40);
                 //palavrarandom.setText(todasCategorias[cont]);
                 cont = cont+1;
+                //aqui */
             }else {
                 Toast.makeText(MainActivity.this, "Fim das palavras!", Toast.LENGTH_LONG).show();
             }
@@ -150,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();*/
     }
 
+    //alertDialog do fim do jogo
     private void fimDoJogo(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Vitoria!");
@@ -173,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setTextSize(40);
     }
 
+    //AlerDialog abre quando o jogador deseja encerrar a partida
     private void alertDialogEncerrarJogo(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Deseja realmente sair da partida?");
@@ -194,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //AlertDialog abre e da boas vindas a nova partida
     private void alertDialogBoasVindas(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Vamos Começar!");
@@ -214,12 +294,14 @@ public class MainActivity extends AppCompatActivity {
         eq = 0;
     }
 
+
     @Override
     public void onBackPressed() {
         alertDialogEncerrarJogo();
         //super.onBackPressed();
     }
 
+    //clique do botão que gera a palavra
     public void gerarPalavra(View view){
         selecionaPalavraAleatoriamente();
     }
@@ -227,7 +309,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Metodos que inserem palavras na lista principal de acordo com a categoria selecionada
      * */
-
     private void profissao(){
         profissao = new String[]{
                 "Advogado", "Bancario", "Desenvolvedor", "Atendente de Telemarketing", "Cantor", "Ator", "Jogardor de futebol", "Professor", "Motorista", "balconista", "Frentista", "Marceneiro","Babá","Back Office", "Back Office de Vendas","Balanceiro","Balconista","Bamburista","Barista","Barman","Berçarista","Bibliotecário","Bilheteiro",
