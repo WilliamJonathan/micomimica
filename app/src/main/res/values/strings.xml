@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">micomimica</string>
+    <string name="equipe1">Equipe 1</string>
+    <string name="equipe2">Equipe 2</string>
 </resources>
