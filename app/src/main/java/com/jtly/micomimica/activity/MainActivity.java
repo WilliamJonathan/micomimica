@@ -1,5 +1,6 @@
 package com.jtly.micomimica.activity;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         gerar = findViewById(R.id.btnGerar);
         equipe1.setVisibility(View.GONE);
         equipe2.setVisibility(View.GONE);
+
 
         baralho = false;
         cont = 0;
