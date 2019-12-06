@@ -1,7 +1,11 @@
 package com.jtly.micomimica.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -85,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         todasCategorias = ArrayUtils.addAll(objetoLista, todasCategorias);
         todasCategorias = ArrayUtils.addAll(animalLista, todasCategorias);
 
-        //verifica de as palavras já forqam embaralhadas
+        //verifica de as palavras já foram embaralhadas
         if (!baralho){
             Collections.shuffle(Arrays.asList(todasCategorias));
             baralho = true;
@@ -110,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         //return tempo;
         return null;
     }*/
+
 
     private void iniciarTimer(){
         pararTimer = false;
