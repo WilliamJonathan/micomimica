@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] profissaoLista, esporteLista, filmeLista, objetoLista, animalLista;
     private String eq1, eq2;
     private Boolean verificaProfissao, verificaEsporte, verificaFilme, verificaObjeto, verificaAnimal;
-    private int cont, eq, pontos1, pontos2;
-    private long tempo;
+    private Boolean pararTimer = false;
+    private int cont, eq, pontos1, pontos2, tempo;
     private AlertDialog dialogPalavra;
 
     @Override
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         cont = 0;
         pontos1 = 0;
         pontos2 = 0;
-        tempo = 60;
+        //tempo = 60;
 
         //Verifica quais categorias foram selecionadas no CheckBox
         Bundle bundle = getIntent().getExtras();
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private CountDownTimer timer(){
+    /*private CountDownTimer timer(){
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long l) {
@@ -109,6 +109,38 @@ public class MainActivity extends AppCompatActivity {
         }.start();
         //return tempo;
         return null;
+    }*/
+
+    private void iniciarTimer(){
+        pararTimer = false;
+        MyRunnable myRunnable = new MyRunnable();
+        new Thread(myRunnable).start();
+    }
+
+    class MyRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            for (int i=60; i >=0; i--){
+                tempo = i;
+                if (pararTimer)
+                    return;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView timer = dialogPalavra.findViewById(R.id.txtTimer);
+                        timer.setText(String.valueOf(tempo));
+                    }
+                });
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
     }
 
     //Metodo que insere as palavras no textView
@@ -143,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                                 eq = 0;
                             }
                         }
-                        //dimis
+                        pararTimer = true;
                         dialogPalavra.cancel();
                     }
                 });
@@ -158,18 +190,18 @@ public class MainActivity extends AppCompatActivity {
                             gerar.setText("Proximo a jogar\n"+eq1);
                             eq = 0;
                         }
+                        pararTimer = true;
                         dialogPalavra.cancel();
                     }
                 });
                 dialogPalavra.show();
                 TextView palavra = dialogPalavra.findViewById(R.id.txtPalavra);
                 palavra.setText(todasCategorias[cont]);
-                timer();
-                /*Thread te = new Thread();
-                te.interrupt();*/
+                iniciarTimer();
                 cont = cont+1;
             }else {
                 Toast.makeText(MainActivity.this, "Fim das palavras!", Toast.LENGTH_LONG).show();
+                pararTimer = true;
             }
 
         }else {
@@ -181,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
     //alertDialog do fim do jogo
     private void fimDoJogo(){
+        pararTimer = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Vitoria!");
         if (eq == 0){
@@ -205,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
     //AlerDialog abre quando o jogador deseja encerrar a partida
     private void alertDialogEncerrarJogo(){
+        pararTimer = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Deseja realmente sair da partida?");
         builder.setCancelable(false);
