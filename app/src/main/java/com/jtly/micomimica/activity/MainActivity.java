@@ -389,9 +389,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void animal(){
         animal = new String[]{
-                "Cavalo", "Leão", "Cachorro",
-                "Coelho", "Canguru", "Coala",
-                "Zebra", "Ornitorrinco", "Baleia Azul"
+                "Jacaré","tamanduá","Antílope","Castor","Urso","Camelo","Crocodilo","Veado","Águia","Elefante","Peixe","Raposa","Gazela","Girafa",
+                "Gorila","Hipopótamo","Hiena","Chacal","Canguru","Coala","Leopardo","Leão","Arara","Suricate","Macaco","Orangotango","Avestruz","Lontra",
+                "Jaguar","Coruja","Panda","Pantera","Pavão","Pinguim","Urso polar","Rinoceronte","Cobra","Tigre","Tartaruga marinha","Tartaruga terrestre",
+                "Morsa","Zebra","Gato","Hamster","Coelho","Cachoro","Baleia Azul","Tubarão Branco","Tubarão Tigre","Tubarão Martelo","Baleia Jubarte",
+                "Baleia Cachalote","ornitorrinco","Caguru","Cavalo","Boi","Vaca","Avestruz","Pica-pau","Morcego","Beija-flor","Peixe voador","Falcão",
+                "Águia","Papagaio","Bem-te-vi","João-de-barro","Rolinha","Coleiro","Pardal","Cegonha","Sapo Boi","Sapo","Coiote","Puma","Jaguar","Leopardo",
+                "Guepardo","Orangontango","Macaco-aranha","Lula Gigante","Camarão","Lagosta","Carangueijo","Golfinho","Abelha","Besouro","Borboleta",
+                "Vaga-lume","Cigarra","Cupim","Mosca","Gafanhoto","Formiga","Grilo","Piolho","Pulga","Pernilongo","Lagarta","Borrachudo","Galinha","Galo",
+                "Pato","Ganço","Marreco","Peixe-espada","Peixe-palhaço"
         };
         if (verificaAnimal){
             animalLista = animal;
