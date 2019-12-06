@@ -325,9 +325,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void esporte(){
         esporte = new String[]{
-                "Futebol", "Golf", "Natação", "Maratonismo",
-                "Automobilismo", "Ciclismo", "Crossfit", "MMA",
-                "Baseball"
+                "Capoeira","Lacrosse","hóquei no gelo","Esgrima","Vôlei","Críquete","Arquearia","Futebol","Beisebol","Golfe",
+                "Sumô","Basquete","Futebol Americano","Automobilismo","Tênis","Tênis de mesa","Motocross","Surf","Natação","Crossfit",
+                "Musculação","Ginástica artística","Alpinismo","Boxe","Handebol","Curling","Bobsled","Esqui estilo livre","Patinação artística",
+                "Patinação de velocidade","Skeleton","Snowboard","Escalada","Mountain bike","Rapel","Paraquedismo","Down Hill","Surf","Rafting",
+                "Arborismo","Taekwondo","Kung-fu","Jiu-jitsu","Karatê","Judô","Muay Thai","Futsal","Ciclismo","Maratonismo"
         };
         if (verificaEsporte){
             esporteLista = esporte;
@@ -338,9 +340,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void filme(){
         filme = new String[]{
-                "Lagoa azul", "Titanic", "Vingadores", "Esterminador do futuro",
-                "A mulher de preto", "Anabelle", "Godzilla", "Velozes e furiosos",
-                "Bastardos inglórios"
+                "Um sonho de Liberdade","O Poderoso Chefão","O Poderoso Chefão II","Batman - O Cavaleiro das Trevas","12 Homens e uma Sentença",
+                "A Lista de Schindler","Pulp Fiction: Tempo de Violência","O Senhor dos Anéis: O Retorno do Rei","Três homens em Conflito","Clube da Luta",
+                "O Senhor dos Anéis: A Sociedade do Anel","Forrest Gump: O Contador de Histórias","Star Wars: Episódio V - O Império Contra-Ataca","Inception",
+                "O Senhor dos Anéis: As Duas Torres","Um Estranho no Ninho","Os Bons Companheiros","Matrix","Os Sete Samurais",
+                "Guerra nas Estrelas - Uma Nova Esperança","Cidade de Deus","Seven: Os Sete Crimes Capitais","O Silêncio dos Inocentes",
+                "A Felicidade Não se Compra","A Vida é Bela","Os Suspeitos","O Profissional","O Resgate do Soldado Ryan","A Viagem de Chihiro",
+                "A Outra História Americana","Era uma Vez no Oeste","Interestelar","À Espera de um Milagre","Psicose","Casablanca","Luzes da Cidade",
+                "Intocáveis","Os Tempos Modernos","O Pianista","Indiana Jones e Os Caçadores da Arca Perdida","Os Infiltrados","Janela Indiscreta",
+                "O Exterminador do Futuro 2: O Julgamento Final","De Volta para o Futuro","Whiplash: Em Busca da Perfeição","Gladiador","O Grande Truque",
+                "O Rei Leão","Amnésia","Apocalypse Now","Alien, o Oitavo Passageiro","O Grande Ditador","Crepúsculo dos Deuses","Cinema Paradiso",
+                "Dr. Fantástico","A Vida dos Outros","O Túmulo dos Vagalumes","Glória Feita de Sangue","Django Livre","O Iluminado","Wall-E","Beleza Americana",
+                "Blade Runner 2049","Batman: O Cavaleiro das Trevas Ressurge","Princesa Mononoke","Oldboy","Aliens, O Resgate","Testemunha de Acusação",
+                "Era Uma Vez na América","O barco: Inferno no Mar","Dangal","O Cidadão Kane","Um Corpo que Cai","Intriga Internacional",
+                "Star Wars: Episódio VI - O Retorno de Jedi","Coração Valente","Cães de Aluguel","M, O Vampiro de Dusseldorf","Réquiem Para um Sonho",
+                "Como Estrelas na Terra","O Fabuloso Destino de Amélie Poulain","Kimi no na wa.","Laranja Mecânica","Lawrence da Arábia","Amadeus",
+                "Pacto de Sangue","Brilho Eterno de uma Mente Sem Lembranças","Taxi Driver","O Sol é Para Todos","Nascido para Matar",
+                "2001: Uma Odisseia no Espaço","Cantando na Chuva","Toy Story","3 Idiots","Golpe de Mestre","Toy Story 3","Bastardos Inglórios",
+                "Ladrões de Bicicletas","O Garoto","dunkirk","Snatch: Porcos e Diamantes","Monty Python em Busca do Cálice Sagrado","Gênio Indomável",
+                "A Caça","Por Uns Dólares a Mais ","Los Angeles: Cidade Proibida","Scarface","Se Meu Apartamento Falasse","Metrópolis ","A Separação",
+                "Rashomon","Indiana Jones e a Última Cruzada","A Malvada","Yojimbo - O Guarda-Costas","Meu Pai e Meu Filho","Up: Altas Aventuras",
+                "Batman Begins","Quanto Mais Quente Melhor","O Tesouro da Sierra Madre","Os Imperdoáveis","A Queda! As Últimas Horas de Hitler",
+                "Duro de Matar","Touro Indomável","Fogo Contra Fogo","Filhos do Paraíso","O 3º Homem","Fugindo do Inferno","Viver","Chinatown",
+                "O Labirinto do Fauno","Meu Amigo Totoro","Incêndios","Ran","Julgamento em Nuremberg","Em Busca do Ouro","O Segredo dos seus Olhos",
+                "Divertida Mente","O Castelo Animado","Sindicato de Ladrões","A Ponte do Rio Kwai","O Sétimo Selo","O Quarto de Jack",
+                "Jogos, Trapaças e Dois Canos Fumegantes","A Mulher Faz o Homem","Uma Mente Brilhante","Cassino","Blade Runner, o Caçador de Androides",
+                "O Homem Elefante","V de Vingança","O Lobo de Wall Street"
         };
         if (verificaFilme){
             filmeLista = filme;
