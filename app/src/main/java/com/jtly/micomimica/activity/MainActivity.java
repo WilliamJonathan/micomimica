@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 View view = layoutInflater.inflate(R.layout.dialog_principal, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setView(view);
+                builder.setCancelable(false);
                 dialogPalavra = builder.create();
                 //btn positivo
                 view.findViewById(R.id.btnAcertou).setOnClickListener(new View.OnClickListener() {
@@ -356,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
                 "Star Wars: Episódio VI - O Retorno de Jedi","Coração Valente","Cães de Aluguel","M, O Vampiro de Dusseldorf","Réquiem Para um Sonho",
                 "Como Estrelas na Terra","O Fabuloso Destino de Amélie Poulain","Kimi no na wa.","Laranja Mecânica","Lawrence da Arábia","Amadeus",
                 "Pacto de Sangue","Brilho Eterno de uma Mente Sem Lembranças","Taxi Driver","O Sol é Para Todos","Nascido para Matar",
-                "2001: Uma Odisseia no Espaço","Cantando na Chuva","Toy Story","3 Idiots","Golpe de Mestre","Toy Story 3","Bastardos Inglórios",
+                "2001: Uma Odisseia no Espaço","Cantando na Chuva","Toy Story","3 Idiotas","Golpe de Mestre","Toy Story 3","Bastardos Inglórios",
                 "Ladrões de Bicicletas","O Garoto","dunkirk","Snatch: Porcos e Diamantes","Monty Python em Busca do Cálice Sagrado","Gênio Indomável",
                 "A Caça","Por Uns Dólares a Mais ","Los Angeles: Cidade Proibida","Scarface","Se Meu Apartamento Falasse","Metrópolis ","A Separação",
                 "Rashomon","Indiana Jones e a Última Cruzada","A Malvada","Yojimbo - O Guarda-Costas","Meu Pai e Meu Filho","Up: Altas Aventuras",
@@ -376,9 +377,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void objeto(){
         objeto = new String[]{
-                "Faca", "Tesoura", "Balde de flor",
-                "Garrafa de agua", "Caneta", "Celular",
-                "Mochila", "Poutrona", "Agulha"
+                "Despertador","Cama","Mesa de cabeceira","Cobertor","Beliche","Lustre","cama de casal","Penteadeira","Edredom","Cabide",
+                "Cabeceira","Abajur","Colchão","Quadro","Travesseiro","Fronha","Lençol","Estante","Cama de solteiro","Papel de parede","Guarda roupas",
+                "Vassoura","Balde","Cafeteira","Xícara","Armário","Lava louças","Garfo","Fruteira","Copo","Ferro de passar roupa","Tábua de passar roupa",
+                "Bucha","Faca","Microondas","Esfregão","Caneca","Forno","Frigideira","Prato","Ralo","Panela","Geladeira","Pia","Colher","Banco","Fogão",
+                "Rodo","Toalha de mesa","Torneira","Aspirador de pó","Vaso","Máquina de lavar roupas","Poltrona","Cinzeiro","Persianas","Estante","Cadeira",
+                "Relógio","Bengaleiro","Computador","Sofá","Cortinas","Almofada","Mesa","Escrivaninha","Maçaneta","Capacho","Lareira","Lenha","Lâmpada",
+                "Radiador","Rádio","Tapete","Aparador","Interruptor","Telefone","Televisão","Banheira","Perfume","Pente","Condicionador","Cotonete","Fio dental",
+                "Desodorante","Fraldas","Escova de cabelo","Espelho","Creme hidratante","Absorvente","Lâmina de barbear","Shampoo","Creme de barbear","Chuveiro",
+                "Sabonete","Esponja","Papel higiênico","Escova de dente","Pasta de dente","Toalha","Secador de cabelo","Sapato","Calculadora",
+                "Maquina de escrever","Balde de agua","Vaso de flor","Sapatos","Calça jeans","Meia calça","Toalha de rosto","Pano de prato","Fones de ouvido",
+                "Capacete","Celular","Violão","Guitarra","Skate","Piano","Teclado"
         };
         if (verificaObjeto){
             objetoLista = objeto;
