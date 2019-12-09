@@ -13,11 +13,11 @@
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/bkg_categoria"
         android:foregroundGravity="center"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -41,12 +41,7 @@
             <RadioGroup
                 android:id="@+id/radioGroupCategoria"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/radioGroupCategoria2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="70dp">
+                android:layout_height="wrap_content">
 
                 <CheckBox
                     android:id="@+id/checkBoxProfissao"
@@ -78,11 +73,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/radioGroupCategoria3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/radioGroupCategoria"
-                tools:layout_editor_absoluteY="70dp">
+                android:layout_marginRight="8dp">
 
                 <CheckBox
                     android:id="@+id/checkBoxFilmes"
@@ -110,11 +101,7 @@
             <RadioGroup
                 android:id="@+id/radioGroupCategoria3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/radioGroupCategoria2"
-                tools:layout_editor_absoluteY="70dp">
+                android:layout_height="wrap_content">
 
                 <CheckBox
                     android:id="@+id/checkBoxAnimais"
@@ -129,55 +116,46 @@
             </RadioGroup>
 
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <EditText
-            android:id="@+id/edtEquipe1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/equipe1"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="339dp" />
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtEquipe2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/equipe2"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEquipe1" />
+            <EditText
+                android:id="@+id/edtEquipe1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bkg_caixa_texto"
+                android:ems="10"
+                android:hint="@string/equipe1"
+                android:inputType="textPersonName"
+                android:padding="10dp" />
 
-        <Button
-            android:id="@+id/btnComecar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:onClick="iniciaJogo"
-            android:text="Começar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEquipe2" />
+            <EditText
+                android:id="@+id/edtEquipe2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bkg_caixa_texto"
+                android:ems="10"
+                android:hint="@string/equipe2"
+                android:inputType="textPersonName"
+                android:padding="10dp"/>
+
+            <Button
+                android:id="@+id/btnComecar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorAccent"
+                android:textColor="#FFFFFF"
+                android:onClick="iniciaJogo"
+                android:text="Começar" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
