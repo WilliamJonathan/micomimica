@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkg_fundo_padrao"
     tools:context=".activity.TipoJogoActivity">
 
     <TextView
@@ -40,9 +41,10 @@
         android:id="@+id/radioGroupCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroupCategoria2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
@@ -50,31 +52,82 @@
             android:id="@+id/checkBoxProfissao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profissões" />
+            android:background="@drawable/background_checkbox"
+            android:buttonTint="#FFFFFF"
+            android:padding="10dp"
+            android:text="Profissão"
+            android:textColor="#FFFFFF" />
 
         <CheckBox
             android:id="@+id/checkBoxEsportes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Esportes" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_checkbox"
+            android:buttonTint="#FFFFFF"
+            android:padding="10dp"
+            android:text="Esportes"
+            android:textColor="#FFFFFF" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroupCategoria2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroupCategoria3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radioGroupCategoria"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <CheckBox
             android:id="@+id/checkBoxFilmes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Filmes" />
+            android:background="@drawable/background_checkbox"
+            android:buttonTint="#FFFFFF"
+            android:padding="10dp"
+            android:text="Filmes"
+            android:textColor="#FFFFFF" />
 
         <CheckBox
             android:id="@+id/checkBoxObjetos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Objetos" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_checkbox"
+            android:buttonTint="#FFFFFF"
+            android:padding="10dp"
+            android:text="Objetos"
+            android:textColor="#FFFFFF" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroupCategoria3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radioGroupCategoria2"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <CheckBox
             android:id="@+id/checkBoxAnimais"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Animais" />
+            android:background="@drawable/background_checkbox"
+            android:buttonTint="#FFFFFF"
+            android:padding="10dp"
+            android:text="Animais"
+            android:textColor="#FFFFFF" />
+
     </RadioGroup>
 
     <Button
@@ -106,8 +159,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/equipe2"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtEquipe1" />
@@ -118,4 +171,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
