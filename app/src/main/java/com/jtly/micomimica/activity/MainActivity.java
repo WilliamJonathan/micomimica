@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        
+
         //palavra = findViewById(R.id.txtPalavra);
         //timer = findViewById(R.id.txtTimer);
         equipe1 = findViewById(R.id.txtEquipe1);
@@ -250,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
     private void alertDialogBoasVindas(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Vamos Começar!");
-        builder.setMessage("Equipe "+eq1+"\n"+"e\n"+"Equipe "+eq2);
+        builder.setMessage("Equipes:\n"+eq1+"\n"+eq2);
         builder.setCancelable(false);
         builder.setPositiveButton("Começar jogo", new DialogInterface.OnClickListener() {
             @Override
@@ -264,6 +264,8 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+        TextView textView = dialog.findViewById(android.R.id.message);
+        textView.setTextSize(24);
         eq = 0;
     }
 

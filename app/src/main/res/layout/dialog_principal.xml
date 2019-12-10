@@ -54,21 +54,25 @@
             android:id="@+id/btnErrou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="1"
-            android:text="Errou"
             android:background="@color/colorAccent"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"/>
+            android:text="Errou"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnAcertou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="1"
-            android:text="Acertou"
             android:background="@color/colorAccent"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"/>
+            android:text="Acertou"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </LinearLayout>
