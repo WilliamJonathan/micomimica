@@ -1,10 +1,15 @@
 package com.jtly.micomimica.activity;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -37,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
+        
         //palavra = findViewById(R.id.txtPalavra);
         //timer = findViewById(R.id.txtTimer);
         equipe1 = findViewById(R.id.txtEquipe1);
@@ -91,25 +96,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-    /*private CountDownTimer timer(){
-        new CountDownTimer(60000, 1000) {
-            @Override
-            public void onTick(long l) {
-                tempo = l / 1000;
-                TextView timer = dialogPalavra.findViewById(R.id.txtTimer);
-                timer.setText(String.valueOf(tempo));
-            }
-
-            @Override
-            public void onFinish() {
-                Toast.makeText(MainActivity.this, "Fim do tempo", Toast.LENGTH_SHORT).show();
-            }
-        }.start();
-        //return tempo;
-        return null;
-    }*/
-
 
     private void iniciarTimer(){
         pararTimer = false;
@@ -272,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 equipe1.setVisibility(View.VISIBLE);
                 equipe2.setVisibility(View.VISIBLE);
                 gerar.setText("Primeiro a jogar\n"+eq1);
-                dialogInterface.dismiss();
+                dialogInterface.cancel();
             }
         });
 
